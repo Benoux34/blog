@@ -1,4 +1,6 @@
+import { Icons } from "@/components/Icons/Icons";
 import { SignInForm } from "@/components/authentication/SignInForm";
+import { Button } from "@/components/ui/button";
 
 const SignIn = () => {
   return (
@@ -21,6 +23,12 @@ const SignIn = () => {
               Or continue with
             </span>
           </div>
+        </div>
+        <div>
+          <Button className="w-full" variant={"outline"}>
+            <Icons.google />
+            Connect with Google
+          </Button>
         </div>
 
         <div className="absolute bottom-5 right-5 xl:right-10">
