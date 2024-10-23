@@ -1,5 +1,4 @@
 import { SignInForm } from "@/components/authentication/SignInForm";
-import { SignInGoogleBtn } from "@/components/authentication/SignInGoogleBtn";
 
 const SignIn = () => {
   return (
@@ -23,7 +22,6 @@ const SignIn = () => {
             </span>
           </div>
         </div>
-        <div>{/* <SignInGoogleBtn /> */}</div>
 
         <div className="absolute bottom-5 right-5 xl:right-10">
           <a href="/sign-up" className="text-sm hover:underline">
