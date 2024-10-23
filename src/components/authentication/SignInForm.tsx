@@ -66,9 +66,10 @@ const SignInForm = () => {
           description: "Make sure that your email and password are correct!",
         });
       }
-    } catch (error: any) {
+    } catch (error) {
       setIsLoading(false);
-      toast({ title: "Login Failed", description: error.message });
+      toast({ title: "Login Failed" });
+      console.log(error);
     }
   };
 

@@ -17,8 +17,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Icons } from "../Icons/Icons";
 import { useRouter } from "next/navigation";
-import { signIn } from "../../../auth";
-import { signInCredentials } from "@/lib/signIn";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -86,13 +84,13 @@ const SignUpForm = () => {
 
         router.push("/");
       }
-    } catch (error: any) {
+    } catch (error) {
       setIsLoading(false);
       toast({
         variant: "destructive",
         title: "Registration Failed",
-        description: error.message,
       });
+      console.log(error);
     }
   };
 
