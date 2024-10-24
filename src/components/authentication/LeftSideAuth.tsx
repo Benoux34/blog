@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { getMousePosition } from "@/lib/getMousePosition";
+import { GetMousePosition } from "@/lib/getMousePosition";
 
 const LeftSideAuth = () => {
-  const { mouseX, mouseY } = getMousePosition();
+  const { mouseX, mouseY } = GetMousePosition();
 
   const [eyePosition, setEyePosition] = useState<{
     leftEye: {
