@@ -3,6 +3,7 @@
 import { Icons } from "@/components/Icons/Icons";
 import { SignUpForm } from "@/components/authentication/SignUpForm";
 import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
 
 const SignUp = () => {
   return (
@@ -27,7 +28,11 @@ const SignUp = () => {
           </div>
         </div>
         <div>
-          <Button className="w-full" variant={"outline"}>
+          <Button
+            onClick={() => signIn("google")}
+            className="w-full"
+            variant={"outline"}
+          >
             <Icons.google />
             Connect with Google
           </Button>

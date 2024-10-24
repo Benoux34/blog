@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import { sql } from "@vercel/postgres";
-import { signInCredentials } from "@/lib/signIn";
+import { signIn } from "next-auth/react";
 
 export async function POST(request: Request) {
   const { username, email, password } = await request.json();
@@ -22,7 +22,11 @@ export async function POST(request: Request) {
 
     await sql`INSERT INTO users (username, email, password) VALUES (${username}, ${email}, ${hashedPassword})`;
 
-    signInCredentials(email, password);
+    await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
 
     return NextResponse.json({ message: "success" }, { status: 200 });
   } catch (e) {
