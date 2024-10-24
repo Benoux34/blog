@@ -1,6 +1,7 @@
 "use client";
 
 import { Icons } from "@/components/Icons/Icons";
+import { LeftSideAuth } from "@/components/authentication/LeftSideAuth";
 import { SignInForm } from "@/components/authentication/SignInForm";
 import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
@@ -8,7 +9,9 @@ import { signIn } from "next-auth/react";
 const SignIn = () => {
   return (
     <div className="bg-gray-100 w-full h-screen flex overflow-hidden xl:p-5">
-      <div className="hidden xl:inline xl:w-[60%]"></div>
+      <div className="hidden xl:inline xl:w-[60%]">
+        <LeftSideAuth />
+      </div>
       <div className="relative bg-white h-full w-full xl:w-[40%] flex flex-col justify-center xl:rounded-lg p-5 xl:px-10 xl:py-16">
         <div className="mb-10">
           <h1 className="text-3xl font-semibold mb-1">Login to your account</h1>
