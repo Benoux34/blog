@@ -1,4 +1,9 @@
+"use client";
+
+import { Icons } from "@/components/Icons/Icons";
 import { SignUpForm } from "@/components/authentication/SignUpForm";
+import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
 
 const SignUp = () => {
   return (
@@ -21,6 +26,16 @@ const SignUp = () => {
               Or continue with
             </span>
           </div>
+        </div>
+        <div>
+          <Button
+            onClick={() => signIn("google")}
+            className="w-full"
+            variant={"outline"}
+          >
+            <Icons.google />
+            Connect with Google
+          </Button>
         </div>
 
         <div className="absolute bottom-5 right-5 xl:right-10">
