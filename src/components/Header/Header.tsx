@@ -4,7 +4,7 @@ import { NavUser } from "./Nav/NavUser";
 const Header = () => {
   return (
     <header className="border-b pb-2">
-      <div className="flex justify-between items-center mb-1">
+      <div className="flex justify-between items-center mb-2 mt-1">
         <h1 className="text-4xl font-bold">BLOG</h1>
         <h1 className="text-4xl font-bold">FREEDOM</h1>
       </div>
