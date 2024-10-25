@@ -1,21 +1,16 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { auth } from "../../auth";
-import { IBM_Plex_Mono } from "next/font/google";
+import "../globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
-
-const IBM = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-});
+import { auth } from "../../../auth";
+import { Header } from "@/components/Header/Header";
 
 export const metadata: Metadata = {
-  title: "Blog in Next",
+  title: "Freedom | Blog in Next",
   description: "Blog by Benoux",
 };
 
-export default async function RootLayout({
+export default async function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -23,13 +18,14 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="fr">
-      <body className={`${IBM.className}`}>
+    <div className="mx-5 my-3">
+      <Header />
+      <main>
         <SessionProvider session={session}>
           {children}
           <Toaster />
         </SessionProvider>
-      </body>
-    </html>
+      </main>
+    </div>
   );
 }

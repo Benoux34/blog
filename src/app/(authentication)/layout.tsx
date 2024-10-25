@@ -1,21 +1,21 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { auth } from "../../auth";
-import { IBM_Plex_Mono } from "next/font/google";
+import "../globals.css";
+import { Poppins } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
+import { auth } from "../../../auth";
 
-const IBM = IBM_Plex_Mono({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Blog in Next",
-  description: "Blog by Benoux",
+  title: "Authentication | Blog in Next",
+  description: "Authentication | Blog by Benoux",
 };
 
-export default async function RootLayout({
+export default async function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -23,13 +23,13 @@ export default async function RootLayout({
   const session = await auth();
 
   return (
-    <html lang="fr">
-      <body className={`${IBM.className}`}>
+    <>
+      <main className={`${poppins.className}`}>
         <SessionProvider session={session}>
           {children}
           <Toaster />
         </SessionProvider>
-      </body>
-    </html>
+      </main>
+    </>
   );
 }
