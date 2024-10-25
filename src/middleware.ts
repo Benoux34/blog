@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const token = await getToken({ req, secret });
+  const token = await getToken({ req });
   console.log("token auth - ", token);
 
   if (token) {
