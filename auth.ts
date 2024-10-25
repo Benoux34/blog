@@ -74,6 +74,8 @@ const authOptions = {
         token.email = user.email;
         token.accessToken = user.accessToken;
       }
+      console.log("token ", token);
+
       return token;
     },
     async session({ session, token }: { session: Session; token: JWT }) {
@@ -86,6 +88,8 @@ const authOptions = {
         password: "",
       };
       session.user = userObject;
+
+      console.log("session", session);
 
       return session;
     },
