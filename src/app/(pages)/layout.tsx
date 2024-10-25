@@ -18,7 +18,7 @@ export default async function HomeLayout({
   const session = await auth();
 
   return (
-    <div className="mx-5 my-3">
+    <div className="mx-4 my-2">
       <Header />
       <main>
         <SessionProvider session={session}>

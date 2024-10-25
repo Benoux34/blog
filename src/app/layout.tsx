@@ -4,6 +4,7 @@ import { auth } from "../../auth";
 import { IBM_Plex_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 
 const IBM = IBM_Plex_Mono({
   subsets: ["latin"],
@@ -26,8 +27,10 @@ export default async function RootLayout({
     <html lang="fr">
       <body className={`${IBM.className}`}>
         <SessionProvider session={session}>
-          {children}
-          <Toaster />
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+            {children}
+            <Toaster />
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>
