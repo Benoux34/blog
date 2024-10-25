@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Icons } from "@/components/Icons/Icons";
 import { LeftSideAuth } from "@/components/authentication/LeftSideAuth";
 import { SignInForm } from "@/components/authentication/SignInForm";
@@ -7,10 +8,12 @@ import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 
 const SignIn = () => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
   return (
     <div className="bg-gray-100 w-full h-screen flex overflow-hidden xl:p-5">
       <div className="hidden xl:inline xl:w-[60%]">
-        <LeftSideAuth />
+        <LeftSideAuth showPassword={showPassword} />
       </div>
       <div className="relative bg-white h-full w-full xl:w-[40%] flex flex-col justify-center xl:rounded-lg p-5 xl:px-10 xl:py-16">
         <div className="mb-10">
@@ -18,7 +21,10 @@ const SignIn = () => {
           <p className="text-slate-400 font-light">Please enter your details</p>
         </div>
         <div className="mb-4">
-          <SignInForm />
+          <SignInForm
+            showPassword={showPassword}
+            setShowPassword={setShowPassword}
+          />
         </div>
         <div className="relative mb-4">
           <div className="absolute inset-0 flex items-center">

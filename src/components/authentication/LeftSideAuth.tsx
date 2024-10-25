@@ -2,21 +2,20 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { GetMousePosition } from "@/lib/getMousePosition";
 
-const LeftSideAuth = () => {
+type Props = {
+  showPassword: boolean;
+};
+
+const LeftSideAuth = ({ showPassword }: Props) => {
   const { mouseX, mouseY } = GetMousePosition();
 
   const [eyePosition, setEyePosition] = useState<{
-    leftEye: {
-      x: number;
-      y: number;
-    };
-    rightEye: {
+    eye: {
       x: number;
       y: number;
     };
   }>({
-    leftEye: { x: 0, y: 0 },
-    rightEye: { x: 0, y: 0 },
+    eye: { x: 0, y: 0 },
   });
 
   useEffect(() => {
@@ -28,11 +27,7 @@ const LeftSideAuth = () => {
         (mouseY - window.innerHeight / 1.5) / (window.innerHeight / 2.5);
 
       setEyePosition({
-        leftEye: {
-          x: offsetX * eyeMovementRange,
-          y: offsetY * eyeMovementRange,
-        },
-        rightEye: {
+        eye: {
           x: offsetX * eyeMovementRange,
           y: offsetY * eyeMovementRange,
         },
@@ -52,8 +47,8 @@ const LeftSideAuth = () => {
               <motion.div
                 className="absolute top-2 left-2 h-[10px] w-[10px] bg-black rounded-full"
                 animate={{
-                  x: eyePosition.rightEye.x,
-                  y: eyePosition.rightEye.y,
+                  x: showPassword ? -6 : eyePosition.eye.x,
+                  y: showPassword ? -4 : eyePosition.eye.y,
                 }}
               />
             </div>
@@ -65,8 +60,8 @@ const LeftSideAuth = () => {
               <motion.div
                 className="absolute top-2 left-2 h-[10px] w-[10px] bg-black rounded-full"
                 animate={{
-                  x: eyePosition.rightEye.x,
-                  y: eyePosition.rightEye.y,
+                  x: showPassword ? -6 : eyePosition.eye.x,
+                  y: showPassword ? -4 : eyePosition.eye.y,
                 }}
               />
             </div>
@@ -75,7 +70,8 @@ const LeftSideAuth = () => {
           <div className="absolute top-20 left-24 h-[5px] w-[70px] bg-black" />
         </div>
       </div>
-      <div className="absolute left-[20%] top-[37.5%] bg-orange-400 h-[300px] w-[150px]">
+
+      <div className="absolute left-[17%] top-[31.5%] bg-green-500 h-[350px] w-[170px] rounded-t-full">
         <div className="relative h-full w-full">
           {/* Left Eye */}
           <div className="absolute top-10 left-28 h-[20px] w-[20px] bg-white rounded-full">
@@ -83,8 +79,8 @@ const LeftSideAuth = () => {
               <motion.div
                 className="absolute top-2 left-2 h-[10px] w-[10px] bg-black rounded-full"
                 animate={{
-                  x: eyePosition.rightEye.x,
-                  y: eyePosition.rightEye.y,
+                  x: showPassword ? -6 : eyePosition.eye.x,
+                  y: showPassword ? -4 : eyePosition.eye.y,
                 }}
               />
             </div>
@@ -96,8 +92,40 @@ const LeftSideAuth = () => {
               <motion.div
                 className="absolute top-2 left-2 h-[10px] w-[10px] bg-black rounded-full"
                 animate={{
-                  x: eyePosition.rightEye.x,
-                  y: eyePosition.rightEye.y,
+                  x: showPassword ? -6 : eyePosition.eye.x,
+                  y: showPassword ? -4 : eyePosition.eye.y,
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="absolute top-20 left-16 h-[5px] w-[80px] bg-black" />
+        </div>
+      </div>
+
+      <div className="absolute left-[13%] top-[46.2%] bg-orange-400 h-[230px] w-[150px]">
+        <div className="relative h-full w-full">
+          {/* Left Eye */}
+          <div className="absolute top-10 left-28 h-[20px] w-[20px] bg-white rounded-full">
+            <div className="relative h-full w-full">
+              <motion.div
+                className="absolute top-2 left-2 h-[10px] w-[10px] bg-black rounded-full"
+                animate={{
+                  x: showPassword ? -6 : eyePosition.eye.x,
+                  y: showPassword ? -4 : eyePosition.eye.y,
+                }}
+              />
+            </div>
+          </div>
+
+          {/* Right Eye */}
+          <div className="absolute top-10 left-20 h-[20px] w-[20px] bg-white rounded-full">
+            <div className="relative h-full w-full">
+              <motion.div
+                className="absolute top-2 left-2 h-[10px] w-[10px] bg-black rounded-full"
+                animate={{
+                  x: showPassword ? -6 : eyePosition.eye.x,
+                  y: showPassword ? -4 : eyePosition.eye.y,
                 }}
               />
             </div>
@@ -106,7 +134,8 @@ const LeftSideAuth = () => {
           <div className="absolute top-20 left-20 h-[5px] w-[50px] bg-black" />
         </div>
       </div>
-      <div className="absolute left-[33%] top-[50%] bg-yellow-300 h-[200px] w-[200px] rounded-t-full">
+
+      <div className="absolute left-[28%] top-[50%] bg-yellow-300 h-[200px] w-[200px] rounded-t-full">
         <div className="relative h-full w-full">
           {/* Left Eye */}
           <div className="absolute top-10 left-28 h-[20px] w-[20px] bg-white rounded-full">
@@ -114,8 +143,8 @@ const LeftSideAuth = () => {
               <motion.div
                 className="absolute top-2 left-2 h-[10px] w-[10px] bg-black rounded-full"
                 animate={{
-                  x: eyePosition.rightEye.x,
-                  y: eyePosition.rightEye.y,
+                  x: showPassword ? -6 : eyePosition.eye.x,
+                  y: showPassword ? -4 : eyePosition.eye.y,
                 }}
               />
             </div>
@@ -127,8 +156,8 @@ const LeftSideAuth = () => {
               <motion.div
                 className="absolute top-2 left-2 h-[10px] w-[10px] bg-black rounded-full"
                 animate={{
-                  x: eyePosition.rightEye.x,
-                  y: eyePosition.rightEye.y,
+                  x: showPassword ? -6 : eyePosition.eye.x,
+                  y: showPassword ? -4 : eyePosition.eye.y,
                 }}
               />
             </div>

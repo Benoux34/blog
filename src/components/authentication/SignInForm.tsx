@@ -14,9 +14,11 @@ import { toast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icons } from "../Icons/Icons";
+import { Eye, EyeOff } from "lucide-react";
+import { onClickShowPassword } from "./utils";
 
 const FormSchema = z.object({
   email: z.string().email({
@@ -29,9 +31,16 @@ const FormSchema = z.object({
 
 type FormData = z.infer<typeof FormSchema>;
 
-const SignInForm = () => {
+type Props = {
+  showPassword: boolean;
+  setShowPassword: Dispatch<SetStateAction<boolean>>;
+};
+
+const SignInForm = ({ showPassword, setShowPassword }: Props) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const handleShowPassword = onClickShowPassword(showPassword, setShowPassword);
 
   const form = useForm<FormData>({
     resolver: zodResolver(FormSchema),
@@ -96,7 +105,24 @@ const SignInForm = () => {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Password" {...field} type="password" />
+                <Input
+                  placeholder="Password"
+                  {...field}
+                  type={showPassword ? "text" : "password"}
+                  RightIcon={
+                    showPassword ? (
+                      <EyeOff
+                        className="h-5 w-5 cursor-pointer"
+                        onClick={handleShowPassword}
+                      />
+                    ) : (
+                      <Eye
+                        className="h-5 w-5 cursor-pointer"
+                        onClick={handleShowPassword}
+                      />
+                    )
+                  }
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
