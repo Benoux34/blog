@@ -98,6 +98,16 @@ const authOptions = {
     strategy: "jwt",
     maxAge: 14 * 24 * 60 * 60,
   },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production", // Active HTTPS en production
+      },
+    },
+  },
 } satisfies NextAuthConfig;
 
 export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
