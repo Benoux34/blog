@@ -68,8 +68,6 @@ const authOptions = {
   ],
   callbacks: {
     async jwt({ token, user }: { token: JWT; user: User }) {
-      console.log("token auth - ", token);
-
       if (user) {
         token.id = user.id as string;
         token.name = user.name;

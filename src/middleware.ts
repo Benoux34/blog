@@ -11,6 +11,7 @@ export async function middleware(req: NextRequest) {
   }
 
   const token = await getToken({ req, secret });
+  console.log("token auth - ", token);
 
   if (token) {
     if (pathname === "/sign-in" || pathname === "/sign-up")
