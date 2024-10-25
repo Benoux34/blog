@@ -10,7 +10,12 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  const token = await getToken({ req, secret, raw: true });
+  const token = await getToken({
+    req,
+    secret,
+    raw: true,
+    cookieName: "__Secure-authjs.session-token",
+  });
   console.log("token auth - ", token);
 
   if (token) {
