@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Icons } from "@/components/Icons/Icons";
-import { LeftSideAuth } from "@/components/Authentication/LeftSideAuth";
-import { SignUpForm } from "@/components/Authentication/SignUpForm";
+import { LeftSideAuth } from "@/components/authentication/LeftSideAuth";
+import { SignUpForm } from "@/components/authentication/SignUpForm";
 import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 
