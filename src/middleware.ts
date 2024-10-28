@@ -16,7 +16,6 @@ export async function middleware(req: NextRequest) {
     raw: true,
     cookieName: "__Secure-authjs.session-token",
   });
-  console.log("token auth - ", token);
 
   if (token) {
     if (pathname === "/sign-in" || pathname === "/sign-up")
