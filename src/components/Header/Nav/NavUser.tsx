@@ -15,7 +15,7 @@ const NavUser = () => {
     <div className="flex flex-col md:flex-row items-end md:items-center gap-y-2 md:gap-y-0 gap-x-5 font-light text-xs">
       <Button variant={"ghost"}>
         Welcome{" "}
-        {status === "authenticated" && session?.user
+        {status === "authenticated" && session?.user?.name
           ? session?.user?.name
           : session?.user?.email}
         <User strokeWidth={1} />
