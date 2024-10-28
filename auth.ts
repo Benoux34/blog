@@ -66,6 +66,7 @@ const authOptions = {
       },
     }),
   ],
+
   callbacks: {
     async jwt({ token, user }: { token: JWT; user: User }) {
       if (user) {
@@ -91,9 +92,11 @@ const authOptions = {
       return session;
     },
   },
+
   pages: {
     signIn: "/sign-in",
   },
+
   session: {
     strategy: "jwt",
     maxAge: 14 * 24 * 60 * 60,

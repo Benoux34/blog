@@ -9,12 +9,14 @@ import { FilePlus, LogOut, Moon, Sun, User } from "lucide-react";
 const NavUser = () => {
   const { theme, setTheme } = useTheme();
   const { data: session, status } = useSession();
-  console.log("data : ", session);
 
   return (
     <div className="flex flex-col md:flex-row items-end md:items-center gap-y-2 md:gap-y-0 gap-x-5 font-light text-xs">
       <Button variant={"ghost"}>
-        Welcome {status === "authenticated" && session?.user?.name}
+        Welcome{" "}
+        {status === "authenticated" && session?.user
+          ? session?.user?.name
+          : session?.user?.email}
         <User strokeWidth={1} />
       </Button>
       <Button variant={"ghost"}>
