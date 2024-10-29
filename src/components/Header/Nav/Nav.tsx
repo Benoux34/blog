@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { Award, BadgePlus, List, TrendingUp } from "lucide-react";
+import { Award, BadgePlus, List, Search, TrendingUp } from "lucide-react";
 
 const Nav = () => {
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center gap-y-2 md:gap-y-0 gap-x-5 font-light text-xs">
+      <Button variant={"ghost"}>
+        Search
+        <Search strokeWidth={1} />
+      </Button>
       <Button variant={"ghost"}>
         Popular
         <TrendingUp strokeWidth={1} />
