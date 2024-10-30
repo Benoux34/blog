@@ -7,12 +7,14 @@ import { useState } from "react";
 
 const PostId = ({ params }: { params: { post_id: string } }) => {
   const post_id = params.post_id;
+  console.log(post_id);
 
   const [addedWidgets, setAddedWidgets] = useState<WidgetType>([
     {
       type: "H1",
     },
   ]);
+  console.log(addedWidgets);
 
   return (
     <div className="w-full h-full flex">
