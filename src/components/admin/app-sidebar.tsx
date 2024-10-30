@@ -23,12 +23,15 @@ import {
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useTheme } from "next-themes";
+import { getPostsCountById } from "./utils";
 
 const AppSidebar = () => {
   const { theme, setTheme } = useTheme();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
-  if (!session) redirect("/sign-in");
+  if (status === "unauthenticated") redirect("/sign-in");
+
+  const postsCount = getPostsCountById(session?.user?.email);
 
   return (
     <Sidebar>

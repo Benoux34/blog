@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { Poppins } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "../../../auth";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/admin/app-sidebar";
 
-const poppins = Poppins({
+const IBM = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default async function AdminLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className={`${poppins.className}`}>
+      <main className={`${IBM.className} w-full`}>
         <SessionProvider session={session}>
           <SidebarTrigger />
           {children}

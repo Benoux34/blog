@@ -19,10 +19,12 @@ const NavUser = () => {
           : session?.user?.email}
         <User strokeWidth={1} />
       </Button>
-      <Button variant={"ghost"}>
-        Create your post
-        <FilePlus strokeWidth={1} />
-      </Button>
+      <Link href="/admin/posts">
+        <Button variant={"ghost"}>
+          Create your post
+          <FilePlus strokeWidth={1} />
+        </Button>
+      </Link>
       <Button
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         variant={"ghost"}
