@@ -32,6 +32,7 @@ const AppSidebar = () => {
   if (status === "unauthenticated") redirect("/sign-in");
 
   const postsCount = getPostsCountById(session?.user?.email);
+  console.log(postsCount);
 
   return (
     <Sidebar>
