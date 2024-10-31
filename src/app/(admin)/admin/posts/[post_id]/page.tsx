@@ -14,14 +14,13 @@ const PostId = ({ params }: { params: { post_id: string } }) => {
       type: "H1",
     },
   ]);
-  console.log(addedWidgets);
 
   return (
-    <div className="w-full h-full flex">
-      <div className="w-[75%] h-full">
-        <PostEditor />
+    <div className="w-full h-full flex !overflow-hidden">
+      <div className="w-[60%] xl:w-[75%] max-h-[100vh] overflow-y-scroll">
+        <PostEditor addedWidgets={addedWidgets} />
       </div>
-      <div className="w-[50%] lg:w-[25%] h-full">
+      <div className="w-[40%] xl:w-[25%] max-h-[100vh] !overflow-hidden">
         <PostWidgets setAddedWidgets={setAddedWidgets} />
       </div>
     </div>

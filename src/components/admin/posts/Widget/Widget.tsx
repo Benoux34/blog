@@ -13,7 +13,7 @@ const Widget = ({ icon, title, setAddedWidgets }: Props) => {
 
   return (
     <div
-      className="bg-white flex flex-col justify-center items-center border border-dashed px-3 pt-4 pb-3 cursor-pointer"
+      className="bg-white dark:bg-black flex flex-col justify-center items-center border border-dashed px-3 pt-4 pb-3 cursor-pointer"
       onClick={handleAddWidget}
     >
       {icon}
