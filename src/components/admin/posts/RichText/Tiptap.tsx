@@ -7,8 +7,16 @@ import Text from "@tiptap/extension-text";
 import BulletList from "@tiptap/extension-bullet-list";
 import { Toolbar } from "./Toolbar";
 import { SquareX } from "lucide-react";
+import { Dispatch, SetStateAction } from "react";
+import { WidgetType } from "../entities";
+import { onClickDeleteWidget } from "../Editor/utils";
 
-const Tiptap = () => {
+type Props = {
+  index: number;
+  setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
+};
+
+const Tiptap = ({ index, setAddedWidgets }: Props) => {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({}),
@@ -34,10 +42,16 @@ const Tiptap = () => {
     },
   });
 
+  const handleDeleteWidget = onClickDeleteWidget(index, setAddedWidgets);
+
   return (
     <div className="relative border border-dashed px-4 pb-4 pt-2 mb-2 cursor-pointer">
       <div className="absolute -top-5 right-0 flex gap-x-1">
-        <SquareX className="text-gray-400 h-4 w-4" strokeWidth={1} />
+        <SquareX
+          className="text-gray-400 h-4 w-4"
+          strokeWidth={1}
+          onClick={handleDeleteWidget}
+        />
       </div>
 
       <Toolbar editor={editor} />
