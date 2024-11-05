@@ -19,15 +19,13 @@ const PostId = ({ params }: { params: { post_id: string } }) => {
 
   return (
     <div className="w-full h-full flex !overflow-hidden">
-      <div className="w-[60%] xl:w-[75%] max-h-[100vh] overflow-y-scroll">
+      <div className="w-full max-h-[100vh] overflow-y-scroll pr-32">
         <PostEditor
           addedWidgets={addedWidgets}
           setAddedWidgets={setAddedWidgets}
         />
       </div>
-      <div className="w-[40%] xl:w-[25%] max-h-[100vh] !overflow-hidden">
-        <PostWidgets setAddedWidgets={setAddedWidgets} />
-      </div>
+      {/* <PostWidgets setAddedWidgets={setAddedWidgets} /> */}
     </div>
   );
 };

@@ -3,6 +3,9 @@ import { Toggle } from "@/components/ui/toggle";
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { Editor } from "@tiptap/react";
 import {
+  AlignCenter,
+  AlignLeft,
+  AlignRight,
   Bold,
   Heading4,
   Italic,
@@ -58,9 +61,33 @@ const Toolbar = ({ editor }: Props) => {
       >
         <List className="w-4" />
       </Toggle>
+      <Toggle
+        pressed={editor.isActive("textAlign")}
+        onPressedChange={() =>
+          editor.chain().focus().setTextAlign("left").run()
+        }
+      >
+        <AlignLeft className="w-4" />
+      </Toggle>
+      <Toggle
+        pressed={editor.isActive("textAlign")}
+        onPressedChange={() =>
+          editor.chain().focus().setTextAlign("center").run()
+        }
+      >
+        <AlignCenter className="w-4" />
+      </Toggle>
+      <Toggle
+        pressed={editor.isActive("textAlign")}
+        onPressedChange={() =>
+          editor.chain().focus().setTextAlign("right").run()
+        }
+      >
+        <AlignRight className="w-4" />
+      </Toggle>
       <AlertDialog>
         <AlertDialogTrigger>
-          <Toggle size="sm">
+          <Toggle pressed={editor.isActive("youtube")} size="sm">
             <Video className="w-5" />
           </Toggle>
         </AlertDialogTrigger>

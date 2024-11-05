@@ -28,8 +28,8 @@ type Props = {
 };
 
 const FormSchema = z.object({
-  url: z.string().email({
-    message: "Invalid email address.",
+  url: z.string().min(10, {
+    message: "Invalid url address.",
   }),
   width: z.number().min(2, {
     message: "Width must be at least 2 characters.",

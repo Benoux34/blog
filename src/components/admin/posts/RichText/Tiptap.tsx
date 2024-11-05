@@ -6,6 +6,7 @@ import { Heading } from "@tiptap/extension-heading";
 import Text from "@tiptap/extension-text";
 import BulletList from "@tiptap/extension-bullet-list";
 import Youtube from "@tiptap/extension-youtube";
+import TextAlign from "@tiptap/extension-text-align";
 import { Toolbar } from "./Toolbar";
 import { SquareX } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
@@ -20,7 +21,7 @@ type Props = {
 const Tiptap = ({ index, setAddedWidgets }: Props) => {
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({}),
+      StarterKit,
       Text,
       Heading.configure({
         HTMLAttributes: {
@@ -37,8 +38,12 @@ const Tiptap = ({ index, setAddedWidgets }: Props) => {
         controls: false,
         nocookie: true,
       }),
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
     ],
     content: "",
+    editable: true,
     editorProps: {
       attributes: {
         spellcheck: "false",
@@ -53,7 +58,7 @@ const Tiptap = ({ index, setAddedWidgets }: Props) => {
   return (
     <div
       key={index}
-      className="relative border border-dashed px-4 pb-4 pt-2 mb-2 cursor-pointer"
+      className="relative border border-dashed px-4 pb-4 pt-2 mb-2"
     >
       <div className="absolute -top-5 right-0 flex gap-x-1">
         <SquareX
