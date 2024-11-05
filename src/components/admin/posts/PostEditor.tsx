@@ -32,7 +32,7 @@ const PostEditor = ({ addedWidgets, setAddedWidgets }: Props) => {
           case "Divider":
             return <Divider index={index} setAddedWidgets={setAddedWidgets} />;
           default:
-            return null;
+            return <InputH1 index={index} setAddedWidgets={setAddedWidgets} />;
         }
       })}
     </div>

@@ -7,7 +7,6 @@ import {
   SquareMousePointer,
   Text,
   Type,
-  Video,
 } from "lucide-react";
 import { Widget } from "./Widget/Widget";
 import { WidgetType } from "./entities";
@@ -58,15 +57,10 @@ const PostWidgets = ({ setAddedWidgets }: Props) => {
         <h3 className="text-xs text-sidebar-foreground/70 font-medium text-right mb-2">
           Media
         </h3>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 gap-2">
           <Widget
             icon={<Image className="h-5 w-5 mb-2" />}
             title="Image"
-            setAddedWidgets={setAddedWidgets}
-          />
-          <Widget
-            icon={<Video className="h-5 w-5 mb-2" />}
-            title="Video"
             setAddedWidgets={setAddedWidgets}
           />
         </div>

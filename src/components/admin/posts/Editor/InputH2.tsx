@@ -13,7 +13,10 @@ const InputH2 = ({ index, setAddedWidgets }: Props) => {
   const handleDeleteWidget = onClickDeleteWidget(index, setAddedWidgets);
 
   return (
-    <div className="relative border border-dashed p-4 cursor-pointer mb-2">
+    <div
+      key={index}
+      className="relative border border-dashed p-4 cursor-pointer mb-2"
+    >
       <div className="absolute -top-5 right-0 flex gap-x-1">
         <SquareX
           className="text-gray-400 h-4 w-4"

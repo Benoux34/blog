@@ -1,4 +1,6 @@
+import { AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Toggle } from "@/components/ui/toggle";
+import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { Editor } from "@tiptap/react";
 import {
   Bold,
@@ -7,7 +9,9 @@ import {
   Italic,
   List,
   Strikethrough,
+  Video,
 } from "lucide-react";
+import { VideoEmbed } from "./VideoEmbed";
 
 type Props = Readonly<{
   editor: Editor | null;
@@ -55,6 +59,14 @@ const Toolbar = ({ editor }: Props) => {
       >
         <List className="w-4" />
       </Toggle>
+      <AlertDialog>
+        <AlertDialogTrigger>
+          <Toggle size="sm">
+            <Video className="w-5" />
+          </Toggle>
+        </AlertDialogTrigger>
+        <VideoEmbed editor={editor} />
+      </AlertDialog>
     </div>
   );
 };
