@@ -39,7 +39,7 @@ const DropzoneEditor = ({ index, setAddedWidgets }: Props) => {
           <div className="h-full flex flex-col justify-center items-center">
             <UploadCloud className="h-8 w-8 text-slate-500 dark:text-white mb-3" />
             <p className="text-sm text-slate-500 dark:text-white">
-              Drag 'n' drop some files here, or click to select files
+              Drag &apos;n&apos; drop some files here, or click to select files
             </p>
           </div>
         </div>

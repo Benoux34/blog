@@ -4,7 +4,6 @@ import { AlertDialog } from "@radix-ui/react-alert-dialog";
 import { Editor } from "@tiptap/react";
 import {
   Bold,
-  Heading2,
   Heading4,
   Italic,
   List,
