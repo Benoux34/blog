@@ -18,7 +18,7 @@ type Props = {
 
 const PostWidgets = ({ setAddedWidgets }: Props) => {
   return (
-    <div className="h-full bg-sidebar border-l px-2 py-2 overflow-hidden">
+    <div className="h-full bg-sidebar px-2 py-2 overflow-hidden">
       <h2 className="text-right font-medium mb-10">Post Widgets</h2>
       <div className="mb-4">
         <h3 className="text-xs text-sidebar-foreground/70 font-medium text-right mb-2">

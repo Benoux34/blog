@@ -1,4 +1,3 @@
-import { Input } from "@/components/ui/input";
 import { WidgetType } from "./entities";
 import { Tiptap } from "./RichText/Tiptap";
 import { InputH1 } from "./Editor/InputH1";
@@ -6,6 +5,7 @@ import { InputH2 } from "./Editor/InputH2";
 import { InputH3 } from "./Editor/InputH3";
 import { Divider } from "./Editor/Divider";
 import { Dispatch, SetStateAction } from "react";
+import { DropzoneEditor } from "./Editor/Dropzone";
 
 type Props = {
   addedWidgets: WidgetType;
@@ -26,7 +26,9 @@ const PostEditor = ({ addedWidgets, setAddedWidgets }: Props) => {
           case "Paragraph":
             return <Tiptap index={index} setAddedWidgets={setAddedWidgets} />;
           case "Image":
-            return <Input type="file" placeholder="Image" />;
+            return (
+              <DropzoneEditor index={index} setAddedWidgets={setAddedWidgets} />
+            );
           case "Divider":
             return <Divider index={index} setAddedWidgets={setAddedWidgets} />;
           default:
