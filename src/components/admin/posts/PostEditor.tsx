@@ -5,7 +5,6 @@ import { InputH2 } from "./Editor/InputH2";
 import { InputH3 } from "./Editor/InputH3";
 import { Divider } from "./Editor/Divider";
 import { Dispatch, SetStateAction } from "react";
-import { DropzoneEditor } from "./Editor/Dropzone";
 
 type Props = {
   addedWidgets: WidgetType;
@@ -17,19 +16,15 @@ const PostEditor = ({ addedWidgets, setAddedWidgets }: Props) => {
     <div className="flex flex-col gap-y-5 m-5 lg:m-10">
       {addedWidgets.map((widget, index) => {
         switch (widget.type) {
-          case "H1":
+          case "h1":
             return <InputH1 index={index} setAddedWidgets={setAddedWidgets} />;
-          case "H2":
+          case "h2":
             return <InputH2 index={index} setAddedWidgets={setAddedWidgets} />;
-          case "H3":
+          case "h3":
             return <InputH3 index={index} setAddedWidgets={setAddedWidgets} />;
-          case "Paragraph":
+          case "paragraph":
             return <Tiptap index={index} setAddedWidgets={setAddedWidgets} />;
-          case "Image":
-            return (
-              <DropzoneEditor index={index} setAddedWidgets={setAddedWidgets} />
-            );
-          case "Divider":
+          case "divider":
             return <Divider index={index} setAddedWidgets={setAddedWidgets} />;
           default:
             return <InputH1 index={index} setAddedWidgets={setAddedWidgets} />;

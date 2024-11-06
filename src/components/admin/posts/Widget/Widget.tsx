@@ -4,20 +4,19 @@ import { WidgetType } from "../entities";
 
 type Props = {
   icon: ReactNode;
-  title: string;
+  value: string;
   setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
 };
 
-const Widget = ({ icon, title, setAddedWidgets }: Props) => {
-  const handleAddWidget = onClickAddWidget(title, setAddedWidgets);
+const Widget = ({ icon, value, setAddedWidgets }: Props) => {
+  const handleAddWidget = onClickAddWidget(value, setAddedWidgets);
 
   return (
     <div
-      className="bg-white dark:bg-black flex flex-col justify-center items-center border border-dashed px-3 pt-4 pb-3 cursor-pointer"
+      className="hover:bg-sidebar px-3 py-4 cursor-pointer"
       onClick={handleAddWidget}
     >
       {icon}
-      <p className="text-sm">{title}</p>
     </div>
   );
 };

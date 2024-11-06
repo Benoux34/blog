@@ -1,9 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { PostEditor } from "@/components/admin/posts/PostEditor";
 import { PostWidgets } from "@/components/admin/posts/PostWidgets";
 import { WidgetType } from "@/components/admin/posts/entities";
-import { useState } from "react";
 
 const PostId = ({ params }: { params: { post_id: string } }) => {
   const post_id = params.post_id;
@@ -18,14 +18,16 @@ const PostId = ({ params }: { params: { post_id: string } }) => {
   console.log("widgets : ", addedWidgets);
 
   return (
-    <div className="w-full h-full flex !overflow-hidden">
-      <div className="w-full max-h-[100vh] overflow-y-scroll pr-32">
+    <div className="relative w-full h-full flex !overflow-hidden">
+      <div className="w-full">
         <PostEditor
           addedWidgets={addedWidgets}
           setAddedWidgets={setAddedWidgets}
         />
       </div>
-      {/* <PostWidgets setAddedWidgets={setAddedWidgets} /> */}
+      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
+        <PostWidgets setAddedWidgets={setAddedWidgets} />
+      </div>
     </div>
   );
 };
