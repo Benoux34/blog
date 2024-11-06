@@ -15,7 +15,7 @@ export async function GET(request: Request) {
     if (!response) {
       return NextResponse.json({ error: "Error" });
     } else {
-      return NextResponse.json({ post_count: response });
+      return NextResponse.json({ response });
     }
   } catch (error) {
     console.error("Error posts", error);

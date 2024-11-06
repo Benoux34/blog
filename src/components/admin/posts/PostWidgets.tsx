@@ -1,19 +1,30 @@
+"use client";
+
 import { Dispatch, SetStateAction } from "react";
 import { Heading1, Heading2, Heading3, Rows2, Text } from "lucide-react";
 import { Widget } from "./Widget/Widget";
 import { WidgetType } from "./entities";
 import { Button } from "@/components/ui/button";
-import { onClickResetPost } from "./utils";
+import { onClickResetPost, onClickSave } from "./utils";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 type Props = {
+  postId: string;
+  addedWidgets: WidgetType;
   setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
 };
 
-const PostWidgets = ({ setAddedWidgets }: Props) => {
+const PostWidgets = ({ postId, addedWidgets, setAddedWidgets }: Props) => {
+  const { data: session, status } = useSession();
+
+  if (status === "unauthenticated") redirect("/sign-in");
+
+  const handleSave = onClickSave(postId, addedWidgets, session?.user?.email);
   const handleResetPost = onClickResetPost(setAddedWidgets);
 
   return (
-    <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex items-center gap-x-2">
+    <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex flex-col lg:flex-row items-center gap-x-2 gap-y-2 lg:gap-y-0">
       <div className="flex items-center border rounded-lg">
         <Widget
           icon={<Heading1 className="h-5 w-5" strokeWidth={1.5} />}
@@ -42,7 +53,7 @@ const PostWidgets = ({ setAddedWidgets }: Props) => {
         />
       </div>
       <div>
-        <Button>Save</Button>
+        <Button onClick={handleSave}>Save</Button>
         <Button onClick={handleResetPost} className="ml-2" variant={"outline"}>
           Reset
         </Button>

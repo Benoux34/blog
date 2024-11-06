@@ -3,6 +3,25 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 import { WidgetType } from "./entities";
 
+const onClickSave =
+  (
+    post_id: string,
+    content: WidgetType,
+    author_id: string | null | undefined
+  ): MouseEventHandler<HTMLButtonElement> | undefined =>
+  async () => {
+    if (!author_id) return;
+
+    const response = await fetch(`/api/posts/save-post`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ post_id, content, author_id }),
+    });
+    return response;
+  };
+
 const onClickAddPost =
   (
     router: AppRouterInstance
@@ -23,4 +42,4 @@ const onClickResetPost =
     ]);
   };
 
-export { onClickAddPost, onClickResetPost };
+export { onClickSave, onClickAddPost, onClickResetPost };

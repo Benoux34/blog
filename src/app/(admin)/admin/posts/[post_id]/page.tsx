@@ -7,7 +7,6 @@ import { WidgetType } from "@/components/admin/posts/entities";
 
 const PostId = ({ params }: { params: { post_id: string } }) => {
   const post_id = params.post_id;
-  console.log(post_id);
 
   const [addedWidgets, setAddedWidgets] = useState<WidgetType>([
     {
@@ -15,7 +14,6 @@ const PostId = ({ params }: { params: { post_id: string } }) => {
       content: "",
     },
   ]);
-  console.log(addedWidgets);
 
   return (
     <div className="relative w-full h-full flex !overflow-hidden">
@@ -25,7 +23,11 @@ const PostId = ({ params }: { params: { post_id: string } }) => {
           setAddedWidgets={setAddedWidgets}
         />
       </div>
-      <PostWidgets setAddedWidgets={setAddedWidgets} />
+      <PostWidgets
+        postId={post_id}
+        addedWidgets={addedWidgets}
+        setAddedWidgets={setAddedWidgets}
+      />
     </div>
   );
 };

@@ -11,6 +11,7 @@ const getPostsCountById = async (email: string | null | undefined) => {
         },
       }
     );
+    console.log("reponse = ", response);
     return response;
   } catch (error) {
     console.log(error);
