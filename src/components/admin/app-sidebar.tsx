@@ -24,6 +24,7 @@ import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useTheme } from "next-themes";
 import { getPostsCountById } from "./utils";
+import Link from "next/link";
 
 const AppSidebar = () => {
   const { theme, setTheme } = useTheme();
@@ -37,7 +38,9 @@ const AppSidebar = () => {
   return (
     <Sidebar>
       <SidebarHeader>
-        <h1 className="font-semibold">FREEDOM</h1>
+        <Link href="/">
+          <h1 className="font-semibold">FREEDOM</h1>
+        </Link>
       </SidebarHeader>
       <SidebarContent defaultValue={"posts"}>
         <SidebarGroup>

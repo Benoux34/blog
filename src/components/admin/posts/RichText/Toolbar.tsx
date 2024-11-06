@@ -24,11 +24,11 @@ type Props = Readonly<{
 }>;
 
 const Toolbar = ({ editor }: Props) => {
-  if (!editor) return;
-
   const [textAlignToggle, setTextAlignToggle] = useState<
     "left" | "center" | "right"
   >("left");
+
+  if (!editor) return;
 
   const handleTextAlign = onClickTextAlign(
     editor,

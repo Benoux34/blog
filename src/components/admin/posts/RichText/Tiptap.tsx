@@ -48,6 +48,13 @@ const Tiptap = ({ index, setAddedWidgets }: Props) => {
       }),
     ],
     content: "",
+    onUpdate({ editor }) {
+      setAddedWidgets((prevWidgets) => {
+        return prevWidgets.map((widget, i) =>
+          i === index ? { ...widget, content: editor.getJSON() } : widget
+        );
+      });
+    },
     editable: true,
     immediatelyRender: false,
     editorProps: {

@@ -1,8 +1,8 @@
+import { Dispatch, SetStateAction, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { SquareX } from "lucide-react";
-import { Dispatch, SetStateAction } from "react";
 import { WidgetType } from "../entities";
-import { onClickDeleteWidget } from "./utils";
+import { onChangeContent, onClickDeleteWidget } from "./utils";
 
 type Props = {
   index: number;
@@ -10,6 +10,9 @@ type Props = {
 };
 
 const InputH2 = ({ index, setAddedWidgets }: Props) => {
+  const [value, setValue] = useState<string>("");
+
+  const handleContent = onChangeContent(index, setValue, setAddedWidgets);
   const handleDeleteWidget = onClickDeleteWidget(index, setAddedWidgets);
 
   return (
@@ -28,6 +31,8 @@ const InputH2 = ({ index, setAddedWidgets }: Props) => {
         className="text-[32px] font-semibold !py-8"
         type="text"
         placeholder="Titre H2"
+        value={value}
+        onChange={handleContent}
       />
     </div>
   );

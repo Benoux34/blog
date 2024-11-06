@@ -15,6 +15,7 @@ const PostId = ({ params }: { params: { post_id: string } }) => {
       content: "",
     },
   ]);
+  console.log(addedWidgets);
 
   return (
     <div className="relative w-full h-full flex !overflow-hidden">
