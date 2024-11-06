@@ -2,7 +2,8 @@
 
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { Heading } from "@tiptap/extension-heading";
+import Placeholder from "@tiptap/extension-placeholder";
+import Heading from "@tiptap/extension-heading";
 import Text from "@tiptap/extension-text";
 import BulletList from "@tiptap/extension-bullet-list";
 import Youtube from "@tiptap/extension-youtube";
@@ -22,11 +23,14 @@ const Tiptap = ({ index, setAddedWidgets }: Props) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      Placeholder.configure({
+        placeholder: "Write something …",
+      }),
       Text,
       Heading.configure({
         HTMLAttributes: {
           class: "text-xl font-bold",
-          levels: [4],
+          levels: [3],
         },
       }),
       BulletList.configure({
@@ -40,15 +44,17 @@ const Tiptap = ({ index, setAddedWidgets }: Props) => {
       }),
       TextAlign.configure({
         types: ["heading", "paragraph"],
+        alignments: ["left", "center", "right"],
       }),
     ],
     content: "",
     editable: true,
+    immediatelyRender: false,
     editorProps: {
       attributes: {
         spellcheck: "false",
         class:
-          "flex min-h-[150px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          "flex flex-col min-h-[150px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
       },
     },
   });

@@ -13,7 +13,7 @@ const Widget = ({ icon, value, setAddedWidgets }: Props) => {
 
   return (
     <div
-      className="hover:bg-sidebar px-3 py-4 cursor-pointer"
+      className="hover:bg-sidebar px-3 py-2.5 cursor-pointer"
       onClick={handleAddWidget}
     >
       {icon}

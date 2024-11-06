@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Toggle } from "@/components/ui/toggle";
 import { AlertDialog } from "@radix-ui/react-alert-dialog";
@@ -14,6 +17,7 @@ import {
   Video,
 } from "lucide-react";
 import { VideoEmbed } from "./VideoEmbed";
+import { onClickTextAlign } from "./utils";
 
 type Props = Readonly<{
   editor: Editor | null;
@@ -22,74 +26,70 @@ type Props = Readonly<{
 const Toolbar = ({ editor }: Props) => {
   if (!editor) return;
 
+  const [textAlignToggle, setTextAlignToggle] = useState<
+    "left" | "center" | "right"
+  >("left");
+
+  const handleTextAlign = onClickTextAlign(
+    editor,
+    textAlignToggle,
+    setTextAlignToggle
+  );
+
   return (
     <div className="flex items-center rounded-t-md mb-1">
       <Toggle
         size="sm"
-        pressed={editor.isActive("heading")}
-        onPressedChange={() =>
-          editor.chain().focus().toggleHeading({ level: 2 }).run()
-        }
+        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
       >
         <Heading4 className="w-4" />
       </Toggle>
       <Toggle
         size="sm"
-        pressed={editor.isActive("bold")}
-        onPressedChange={() => editor.chain().focus().toggleBold().run()}
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        disabled={!editor.can().chain().focus().toggleBold().run()}
       >
         <Bold className="w-4" />
       </Toggle>
       <Toggle
         size="sm"
-        pressed={editor.isActive("italic")}
-        onPressedChange={() => editor.chain().focus().toggleItalic().run()}
+        onClick={() => editor.chain().focus().toggleItalic().run()}
       >
         <Italic className="w-4" />
       </Toggle>
       <Toggle
         size="sm"
-        pressed={editor.isActive("strike")}
-        onPressedChange={() => editor.chain().focus().toggleStrike().run()}
+        onClick={() => editor.chain().focus().toggleStrike().run()}
       >
         <Strikethrough className="w-4" />
       </Toggle>
       <Toggle
         size="sm"
-        pressed={editor.isActive("bulletList")}
-        onPressedChange={() => editor.chain().focus().toggleBulletList().run()}
+        onClick={() => editor.chain().focus().toggleBulletList().run()}
       >
         <List className="w-4" />
       </Toggle>
-      <Toggle
-        pressed={editor.isActive("textAlign")}
-        onPressedChange={() =>
-          editor.chain().focus().setTextAlign("left").run()
-        }
-      >
-        <AlignLeft className="w-4" />
-      </Toggle>
-      <Toggle
-        pressed={editor.isActive("textAlign")}
-        onPressedChange={() =>
-          editor.chain().focus().setTextAlign("center").run()
-        }
-      >
-        <AlignCenter className="w-4" />
-      </Toggle>
-      <Toggle
-        pressed={editor.isActive("textAlign")}
-        onPressedChange={() =>
-          editor.chain().focus().setTextAlign("right").run()
-        }
-      >
-        <AlignRight className="w-4" />
+      <Toggle onClick={handleTextAlign}>
+        {textAlignToggle === "left" ? (
+          <AlignLeft
+            onClick={() => setTextAlignToggle("right")}
+            className="w-4"
+          />
+        ) : textAlignToggle === "center" ? (
+          <AlignCenter
+            onClick={() => setTextAlignToggle("left")}
+            className="w-4"
+          />
+        ) : (
+          <AlignRight
+            onClick={() => setTextAlignToggle("center")}
+            className="w-4"
+          />
+        )}
       </Toggle>
       <AlertDialog>
-        <AlertDialogTrigger>
-          <Toggle pressed={editor.isActive("youtube")} size="sm">
-            <Video className="w-5" />
-          </Toggle>
+        <AlertDialogTrigger className="hover:bg-gray-50 rounded-lg px-3 py-2">
+          <Video className="w-5" />
         </AlertDialogTrigger>
         <VideoEmbed editor={editor} />
       </AlertDialog>

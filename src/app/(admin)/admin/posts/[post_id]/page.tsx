@@ -15,7 +15,6 @@ const PostId = ({ params }: { params: { post_id: string } }) => {
       content: "",
     },
   ]);
-  console.log("widgets : ", addedWidgets);
 
   return (
     <div className="relative w-full h-full flex !overflow-hidden">
@@ -25,9 +24,7 @@ const PostId = ({ params }: { params: { post_id: string } }) => {
           setAddedWidgets={setAddedWidgets}
         />
       </div>
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
-        <PostWidgets setAddedWidgets={setAddedWidgets} />
-      </div>
+      <PostWidgets setAddedWidgets={setAddedWidgets} />
     </div>
   );
 };
