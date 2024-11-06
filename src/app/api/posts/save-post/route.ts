@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       content[0].content
     }, ${JSON.stringify(content)}, ${author_id}, false)`;
 
-    return NextResponse.json("success");
+    return NextResponse.json({ success: "success" });
   } catch (error) {
     console.error("Error during sign-in", error);
     return NextResponse.error();
