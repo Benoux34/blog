@@ -10,13 +10,13 @@ const onChangeContent =
   (
     index: number,
     setValue: Dispatch<SetStateAction<string>>,
-    setAddedWidgets: Dispatch<SetStateAction<Content>>
+    setWidgets: Dispatch<SetStateAction<Content>>
   ): ChangeEventHandler<HTMLInputElement> =>
   (e) => {
     const newValue = e.target.value;
     setValue(newValue);
 
-    setAddedWidgets((prevWidgets) => {
+    setWidgets((prevWidgets) => {
       return prevWidgets.map((widget, i) =>
         i === index ? { ...widget, content: newValue } : widget
       );
@@ -26,10 +26,10 @@ const onChangeContent =
 const onClickDeleteWidget =
   (
     index: number,
-    setAddedWidgets: Dispatch<SetStateAction<Content>>
+    setWidgets: Dispatch<SetStateAction<Content>>
   ): MouseEventHandler<SVGSVGElement> =>
   () => {
-    setAddedWidgets((prevWidgets) => prevWidgets.filter((_, i) => i !== index));
+    setWidgets((prevWidgets) => prevWidgets.filter((_, i) => i !== index));
   };
 
 export { onChangeContent, onClickDeleteWidget };

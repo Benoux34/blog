@@ -5,11 +5,11 @@ import { Content } from "@/types/posts";
 type Props = {
   icon: ReactNode;
   value: string;
-  setAddedWidgets: Dispatch<SetStateAction<Content>>;
+  setWidgets: Dispatch<SetStateAction<Content>>;
 };
 
-const Widget = ({ icon, value, setAddedWidgets }: Props) => {
-  const handleAddWidget = onClickAddWidget(value, setAddedWidgets);
+const Widget = ({ icon, value, setWidgets }: Props) => {
+  const handleAddWidget = onClickAddWidget(value, setWidgets);
 
   return (
     <div

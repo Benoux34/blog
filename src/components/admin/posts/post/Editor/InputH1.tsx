@@ -1,32 +1,26 @@
 import { Input } from "@/components/ui/input";
-import { SquareX } from "lucide-react";
-import { onChangeContent, onClickDeleteWidget } from "./utils";
+import { onChangeContent } from "./utils";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Content } from "@/types/posts";
 
 type Props = {
   index: number;
-  setAddedWidgets: Dispatch<SetStateAction<Content>>;
+  widgets: Content;
+  setWidgets: Dispatch<SetStateAction<Content>>;
 };
 
-const InputH1 = ({ index, setAddedWidgets }: Props) => {
-  const [value, setValue] = useState<string>("");
+const InputH1 = ({ index, widgets, setWidgets }: Props) => {
+  const widget = widgets.find(
+    (widget) => widget.type === "h1" || widget.type === "H1"
+  );
+  const h1 = widget?.content as string | "";
 
-  const handleContent = onChangeContent(index, setValue, setAddedWidgets);
-  const handleDeleteWidget = onClickDeleteWidget(index, setAddedWidgets);
+  const [value, setValue] = useState<string>(h1);
+
+  const handleContent = onChangeContent(index, setValue, setWidgets);
 
   return (
-    <div
-      key={index}
-      className="relative border border-dashed p-4 cursor-pointer mb-2"
-    >
-      <div className="absolute -top-5 right-0 flex gap-x-1">
-        <SquareX
-          className="text-gray-400 h-4 w-4"
-          strokeWidth={1}
-          onClick={handleDeleteWidget}
-        />
-      </div>
+    <div key={index} className="border border-dashed p-4 cursor-pointer mb-2">
       <Input
         className="text-[34px] font-bold !py-10"
         type="text"

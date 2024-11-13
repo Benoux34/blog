@@ -16,10 +16,13 @@ import { onClickDeleteWidget } from "../utils";
 
 type Props = {
   index: number;
-  setAddedWidgets: Dispatch<SetStateAction<Content>>;
+  widgets: Content;
+  setWidgets: Dispatch<SetStateAction<Content>>;
 };
 
-const Tiptap = ({ index, setAddedWidgets }: Props) => {
+const Tiptap = ({ index, widgets, setWidgets }: Props) => {
+  const widget = widgets.find((widget) => widget.type === "paragraph");
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -47,9 +50,9 @@ const Tiptap = ({ index, setAddedWidgets }: Props) => {
         alignments: ["left", "center", "right"],
       }),
     ],
-    content: "",
+    content: widget?.content,
     onUpdate({ editor }) {
-      setAddedWidgets((prevWidgets) => {
+      setWidgets((prevWidgets) => {
         return prevWidgets.map((widget, i) =>
           i === index
             ? { type: "paragraph", content: editor.getHTML() }
@@ -68,7 +71,7 @@ const Tiptap = ({ index, setAddedWidgets }: Props) => {
     },
   });
 
-  const handleDeleteWidget = onClickDeleteWidget(index, setAddedWidgets);
+  const handleDeleteWidget = onClickDeleteWidget(index, setWidgets);
 
   return (
     <div

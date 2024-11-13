@@ -1,5 +1,9 @@
 "use client";
 
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { useTheme } from "next-themes";
+import { signOut, useSession } from "next-auth/react";
 import { ChevronUp, FilePlus, LogOut, Moon, Sun, User2 } from "lucide-react";
 import {
   Sidebar,
@@ -10,7 +14,6 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
@@ -20,10 +23,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { signOut, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
-import { useTheme } from "next-themes";
-import Link from "next/link";
 
 const AppSidebar = () => {
   const { theme, setTheme } = useTheme();
@@ -50,7 +49,6 @@ const AppSidebar = () => {
                     <span>Posts</span>
                   </a>
                 </SidebarMenuButton>
-                <SidebarMenuBadge>0</SidebarMenuBadge>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>

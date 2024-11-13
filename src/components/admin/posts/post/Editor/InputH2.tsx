@@ -6,14 +6,18 @@ import { Content } from "@/types/posts";
 
 type Props = {
   index: number;
-  setAddedWidgets: Dispatch<SetStateAction<Content>>;
+  widgets: Content;
+  setWidgets: Dispatch<SetStateAction<Content>>;
 };
 
-const InputH2 = ({ index, setAddedWidgets }: Props) => {
-  const [value, setValue] = useState<string>("");
+const InputH2 = ({ index, widgets, setWidgets }: Props) => {
+  const widget = widgets.find((widget) => widget.type === "h2");
+  const h2 = widget?.content as string | "";
 
-  const handleContent = onChangeContent(index, setValue, setAddedWidgets);
-  const handleDeleteWidget = onClickDeleteWidget(index, setAddedWidgets);
+  const [value, setValue] = useState<string>(h2);
+
+  const handleContent = onChangeContent(index, setValue, setWidgets);
+  const handleDeleteWidget = onClickDeleteWidget(index, setWidgets);
 
   return (
     <div

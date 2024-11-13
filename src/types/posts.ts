@@ -1,6 +1,6 @@
 import { JSONContent } from "@tiptap/react";
 
-type Post = Readonly<{
+type Posts = ReadonlyArray<{
   post_id: number;
   title: string;
   content: Content | null;
@@ -17,4 +17,4 @@ type Content = ReadonlyArray<{
   content?: string | JSONContent;
 }>;
 
-export type { Post, Content };
+export type { Posts, Content };

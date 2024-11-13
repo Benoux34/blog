@@ -7,27 +7,53 @@ import { Divider } from "./Editor/Divider";
 import { Content } from "@/types/posts";
 
 type Props = {
-  addedWidgets: Content;
-  setAddedWidgets: Dispatch<SetStateAction<Content>>;
+  widgets: Content;
+  setWidgets: Dispatch<SetStateAction<Content>>;
 };
 
-const PostEditor = ({ addedWidgets, setAddedWidgets }: Props) => {
+const PostEditor = ({ widgets, setWidgets }: Props) => {
   return (
     <div className="flex flex-col gap-y-5 m-5 lg:m-10">
-      {addedWidgets.map((widget, index) => {
+      {widgets.map((widget, index) => {
         switch (widget.type) {
           case "h1":
-            return <InputH1 index={index} setAddedWidgets={setAddedWidgets} />;
+            return (
+              <InputH1
+                index={index}
+                widgets={widgets}
+                setWidgets={setWidgets}
+              />
+            );
           case "h2":
-            return <InputH2 index={index} setAddedWidgets={setAddedWidgets} />;
+            return (
+              <InputH2
+                index={index}
+                widgets={widgets}
+                setWidgets={setWidgets}
+              />
+            );
           case "h3":
-            return <InputH3 index={index} setAddedWidgets={setAddedWidgets} />;
+            return (
+              <InputH3
+                index={index}
+                widgets={widgets}
+                setWidgets={setWidgets}
+              />
+            );
           case "paragraph":
-            return <Tiptap index={index} setAddedWidgets={setAddedWidgets} />;
+            return (
+              <Tiptap index={index} widgets={widgets} setWidgets={setWidgets} />
+            );
           case "divider":
-            return <Divider index={index} setAddedWidgets={setAddedWidgets} />;
+            return <Divider index={index} setWidgets={setWidgets} />;
           default:
-            return <InputH1 index={index} setAddedWidgets={setAddedWidgets} />;
+            return (
+              <InputH1
+                index={index}
+                widgets={widgets}
+                setWidgets={setWidgets}
+              />
+            );
         }
       })}
     </div>

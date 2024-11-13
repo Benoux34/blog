@@ -6,11 +6,11 @@ import { Content } from "@/types/posts";
 
 type Props = {
   index: number;
-  setAddedWidgets: Dispatch<SetStateAction<Content>>;
+  setWidgets: Dispatch<SetStateAction<Content>>;
 };
 
-const Divider = ({ index, setAddedWidgets }: Props) => {
-  const handleDeleteWidget = onClickDeleteWidget(index, setAddedWidgets);
+const Divider = ({ index, setWidgets }: Props) => {
+  const handleDeleteWidget = onClickDeleteWidget(index, setWidgets);
 
   return (
     <div

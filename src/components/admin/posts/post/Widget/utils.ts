@@ -4,10 +4,10 @@ import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 const onClickAddWidget =
   (
     type: string,
-    setAddedWidgets: Dispatch<SetStateAction<Content>>
+    setWidgets: Dispatch<SetStateAction<Content>>
   ): MouseEventHandler<HTMLDivElement> | undefined =>
   () => {
-    setAddedWidgets((prev) => [...prev, { type }]);
+    setWidgets((prev) => [...prev, { type }]);
   };
 
 export { onClickAddWidget };

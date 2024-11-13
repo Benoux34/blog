@@ -23,8 +23,6 @@ const onClickSave =
       body: JSON.stringify({ post_id, title, slug, content, author_id }),
     });
 
-    console.log("response save post : ", response, content);
-
     if (response.ok === true) toast({ title: "Post saved!" });
     else toast({ title: "Failed!", variant: "destructive" });
   };
@@ -37,6 +35,7 @@ const onClickResetPost =
         content: "",
       },
     ]);
+    toast({ title: "Post has been reset!" });
   };
 
 export { onClickSave, onClickResetPost };
