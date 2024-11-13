@@ -2,6 +2,7 @@ import { Dispatch, MouseEventHandler, SetStateAction } from "react";
 import { getSlug } from "@/lib/get-slug";
 import { toast } from "@/hooks/use-toast";
 import { Content } from "@/types/posts";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const onClickSave =
   (
@@ -38,4 +39,26 @@ const onClickResetPost =
     toast({ title: "Post has been reset!" });
   };
 
-export { onClickSave, onClickResetPost };
+const onClickDeletePost =
+  (
+    post_id: string,
+    router: AppRouterInstance
+  ): MouseEventHandler<HTMLButtonElement> =>
+  async () => {
+    try {
+      const res = await fetch(`/api/posts/delete-post-by-id?id=${post_id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to delete post");
+      }
+
+      router.push("/admin/posts");
+      toast({ title: "Post Delete" });
+    } catch (error) {
+      console.error("Error fetching posts by author:", error);
+    }
+  };
+
+export { onClickSave, onClickResetPost, onClickDeletePost };

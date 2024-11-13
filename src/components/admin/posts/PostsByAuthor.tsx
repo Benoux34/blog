@@ -1,10 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { getPostsByAuthor } from "./utils";
 import { useEffect, useState } from "react";
 import { Posts } from "@/types/posts";
 import { Icons } from "@/components/global/Icons/Icons";
-import Link from "next/link";
 
 type Props = {
   author: string;
@@ -41,15 +41,17 @@ const PostsByAuthor = ({ author }: Props) => {
         </h1>
       </div>
       <div className="flex flex-col">
-        {posts?.map((post) => (
-          <Link
-            href={`/admin/posts/${post.post_id}`}
-            key={post.post_id}
-            className="border-b py-4 px-3"
-          >
-            <h2 className="text-md md:text-lg">{post.title}</h2>
-          </Link>
-        ))}
+        {posts?.map((post) => {
+          return (
+            <Link
+              href={`/admin/posts/${post.post_id}`}
+              key={post.post_id}
+              className="border-b py-4 px-3"
+            >
+              <h2 className="text-md md:text-lg">{post.title}</h2>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

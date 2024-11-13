@@ -4,9 +4,9 @@ import { Dispatch, SetStateAction } from "react";
 import { Heading2, Heading3, Rows2, Text } from "lucide-react";
 import { Widget } from "./Widget/Widget";
 import { Button } from "@/components/ui/button";
-import { onClickResetPost, onClickSave } from "./utils";
+import { onClickDeletePost, onClickResetPost, onClickSave } from "./utils";
 import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { Content } from "@/types/posts";
 
 type Props = {
@@ -16,12 +16,14 @@ type Props = {
 };
 
 const PostWidgets = ({ postId, widgets, setWidgets }: Props) => {
+  const router = useRouter();
   const { data: session, status } = useSession();
 
   if (status === "unauthenticated") redirect("/sign-in");
 
   const handleSave = onClickSave(postId, widgets, session?.user?.email);
   const handleResetPost = onClickResetPost(setWidgets);
+  const handleDeletePost = onClickDeletePost(postId, router);
 
   return (
     <div className="fixed bottom-5 right-5 flex flex-col lg:flex-row items-center gap-x-2 gap-y-2 lg:gap-y-0">
@@ -48,6 +50,13 @@ const PostWidgets = ({ postId, widgets, setWidgets }: Props) => {
         />
       </div>
       <div>
+        <Button
+          onClick={handleDeletePost}
+          className="mr-2"
+          variant={"destructive"}
+        >
+          Delete
+        </Button>
         <Button onClick={handleResetPost} className="mr-2" variant={"outline"}>
           Reset
         </Button>
