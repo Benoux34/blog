@@ -23,7 +23,6 @@ import {
 import { signOut, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useTheme } from "next-themes";
-import { getPostsCountById } from "./utils";
 import Link from "next/link";
 
 const AppSidebar = () => {
@@ -31,9 +30,6 @@ const AppSidebar = () => {
   const { data: session, status } = useSession();
 
   if (status === "unauthenticated") redirect("/sign-in");
-
-  const postsCount = getPostsCountById(session?.user?.email);
-  console.log(postsCount);
 
   return (
     <Sidebar>
@@ -49,12 +45,12 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem key="posts">
                 <SidebarMenuButton asChild>
-                  <a href="/admin/posts">
+                  <a href="/admin/posts/">
                     <FilePlus />
                     <span>Posts</span>
                   </a>
                 </SidebarMenuButton>
-                <SidebarMenuBadge>24</SidebarMenuBadge>
+                <SidebarMenuBadge>0</SidebarMenuBadge>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>

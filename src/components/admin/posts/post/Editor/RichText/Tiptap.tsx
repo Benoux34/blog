@@ -11,12 +11,12 @@ import TextAlign from "@tiptap/extension-text-align";
 import { Toolbar } from "./Toolbar";
 import { SquareX } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
-import { WidgetType } from "../entities";
-import { onClickDeleteWidget } from "../Editor/utils";
+import { Content } from "@/types/posts";
+import { onClickDeleteWidget } from "../utils";
 
 type Props = {
   index: number;
-  setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
+  setAddedWidgets: Dispatch<SetStateAction<Content>>;
 };
 
 const Tiptap = ({ index, setAddedWidgets }: Props) => {

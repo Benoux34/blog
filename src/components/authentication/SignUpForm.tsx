@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Icons } from "../Icons/Icons";
+import { Icons } from "../global/Icons/Icons";
 import { useRouter } from "next/navigation";
 import { onClickShowPassword } from "./utils";
 import { Eye, EyeOff } from "lucide-react";

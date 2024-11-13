@@ -3,7 +3,7 @@ import "../globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "../../../auth";
-import { Header } from "@/components/Header/Header";
+import { Header } from "@/components/global/Header/Header";
 
 export const metadata: Metadata = {
   title: "Freedom | Blog in Next",

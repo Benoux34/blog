@@ -1,10 +1,10 @@
+import { Content } from "@/types/posts";
 import { Dispatch, MouseEventHandler, SetStateAction } from "react";
-import { WidgetType } from "../entities";
 
 const onClickAddWidget =
   (
     type: string,
-    setAddedWidgets: Dispatch<SetStateAction<WidgetType>>
+    setAddedWidgets: Dispatch<SetStateAction<Content>>
   ): MouseEventHandler<HTMLDivElement> | undefined =>
   () => {
     setAddedWidgets((prev) => [...prev, { type }]);

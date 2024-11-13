@@ -1,11 +1,11 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
 import { onClickAddWidget } from "./utils";
-import { WidgetType } from "../entities";
+import { Content } from "@/types/posts";
 
 type Props = {
   icon: ReactNode;
   value: string;
-  setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
+  setAddedWidgets: Dispatch<SetStateAction<Content>>;
 };
 
 const Widget = ({ icon, value, setAddedWidgets }: Props) => {

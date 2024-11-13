@@ -1,12 +1,12 @@
 import { Input } from "@/components/ui/input";
 import { SquareX } from "lucide-react";
 import { Dispatch, SetStateAction, useState } from "react";
-import { WidgetType } from "../entities";
 import { onChangeContent, onClickDeleteWidget } from "./utils";
+import { Content } from "@/types/posts";
 
 type Props = {
   index: number;
-  setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
+  setAddedWidgets: Dispatch<SetStateAction<Content>>;
 };
 
 const InputH3 = ({ index, setAddedWidgets }: Props) => {

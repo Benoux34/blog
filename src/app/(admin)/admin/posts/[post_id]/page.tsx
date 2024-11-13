@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { PostEditor } from "@/components/admin/posts/PostEditor";
-import { PostWidgets } from "@/components/admin/posts/PostWidgets";
-import { WidgetType } from "@/components/admin/posts/entities";
+import { PostEditor } from "@/components/admin/posts/post/PostEditor";
+import { PostWidgets } from "@/components/admin/posts/post/PostWidgets";
+import { Content } from "@/types/posts";
 
 const PostId = ({ params }: { params: { post_id: string } }) => {
   const post_id = params.post_id;
 
-  const [addedWidgets, setAddedWidgets] = useState<WidgetType>([
+  const [addedWidgets, setAddedWidgets] = useState<Content>([
     {
       type: "H1",
       content: "",

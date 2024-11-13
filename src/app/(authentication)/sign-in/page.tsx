@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Icons } from "@/components/Icons/Icons";
+import { Icons } from "@/components/global/Icons/Icons";
 import { LeftSideAuth } from "@/components/authentication/LeftSideAuth";
 import { SignInForm } from "@/components/authentication/SignInForm";
 import { Button } from "@/components/ui/button";

@@ -2,11 +2,11 @@ import { Separator } from "@/components/ui/separator";
 import { SquareX } from "lucide-react";
 import { onClickDeleteWidget } from "./utils";
 import { Dispatch, SetStateAction } from "react";
-import { WidgetType } from "../entities";
+import { Content } from "@/types/posts";
 
 type Props = {
   index: number;
-  setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
+  setAddedWidgets: Dispatch<SetStateAction<Content>>;
 };
 
 const Divider = ({ index, setAddedWidgets }: Props) => {

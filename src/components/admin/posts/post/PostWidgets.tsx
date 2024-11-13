@@ -3,16 +3,16 @@
 import { Dispatch, SetStateAction } from "react";
 import { Heading1, Heading2, Heading3, Rows2, Text } from "lucide-react";
 import { Widget } from "./Widget/Widget";
-import { WidgetType } from "./entities";
 import { Button } from "@/components/ui/button";
 import { onClickResetPost, onClickSave } from "./utils";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { Content } from "@/types/posts";
 
 type Props = {
   postId: string;
-  addedWidgets: WidgetType;
-  setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
+  addedWidgets: Content;
+  setAddedWidgets: Dispatch<SetStateAction<Content>>;
 };
 
 const PostWidgets = ({ postId, addedWidgets, setAddedWidgets }: Props) => {

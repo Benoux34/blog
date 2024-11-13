@@ -4,7 +4,7 @@ import { auth } from "../../auth";
 import { IBM_Plex_Mono } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
-import { ThemeProvider } from "@/components/Providers/ThemeProvider";
+import { ThemeProvider } from "@/components/global/Providers/ThemeProvider";
 
 const IBM = IBM_Plex_Mono({
   subsets: ["latin"],

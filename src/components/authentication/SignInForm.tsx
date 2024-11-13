@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Icons } from "../Icons/Icons";
+import { Icons } from "../global/Icons/Icons";
 import { Eye, EyeOff } from "lucide-react";
 import { onClickShowPassword } from "./utils";
 

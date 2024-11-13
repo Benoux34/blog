@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction } from "react";
-import { WidgetType } from "./entities";
-import { Tiptap } from "./RichText/Tiptap";
+import { Tiptap } from "./Editor/RichText/Tiptap";
 import { InputH1 } from "./Editor/InputH1";
 import { InputH2 } from "./Editor/InputH2";
 import { InputH3 } from "./Editor/InputH3";
 import { Divider } from "./Editor/Divider";
+import { Content } from "@/types/posts";
 
 type Props = {
-  addedWidgets: WidgetType;
-  setAddedWidgets: Dispatch<SetStateAction<WidgetType>>;
+  addedWidgets: Content;
+  setAddedWidgets: Dispatch<SetStateAction<Content>>;
 };
 
 const PostEditor = ({ addedWidgets, setAddedWidgets }: Props) => {
