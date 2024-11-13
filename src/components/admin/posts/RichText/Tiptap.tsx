@@ -52,7 +52,7 @@ const Tiptap = ({ index, setAddedWidgets }: Props) => {
       setAddedWidgets((prevWidgets) => {
         return prevWidgets.map((widget, i) =>
           i === index
-            ? { type: "paragraph", content: editor.getJSON() }
+            ? { type: "paragraph", content: editor.getHTML() }
             : widget
         );
       });

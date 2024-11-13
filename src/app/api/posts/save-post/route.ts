@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   const { post_id, content, author_id } = data;
 
   try {
-    sql`INSERT INTO posts (post_id, title, content, author_id, is_published) VALUES (${post_id}, ${
+    await sql`INSERT INTO posts (post_id, title, content, author_id, is_published) VALUES (${post_id}, ${
       content[0].content
     }, ${JSON.stringify(content)}, ${author_id}, false)`;
 
