@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import { Dispatch, SetStateAction, useState } from "react";
 import { Heading2, Heading3, Image, Rows2, SquareX, Text } from "lucide-react";
 import { Widget } from "./Widget/Widget";
