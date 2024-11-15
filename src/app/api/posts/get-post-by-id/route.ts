@@ -12,7 +12,7 @@ export async function GET(request: Request) {
     );
   }
 
-  const result = await sql`SELECT content FROM posts WHERE post_id = ${id}`;
+  const result = await sql`SELECT * FROM posts WHERE post_id = ${id}`;
 
   if (result.rows.length === 0) {
     return NextResponse.json(
@@ -21,5 +21,5 @@ export async function GET(request: Request) {
     );
   }
 
-  return NextResponse.json(result.rows);
+  return NextResponse.json(result.rows[0] || null);
 }

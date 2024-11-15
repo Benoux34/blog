@@ -61,4 +61,34 @@ const onClickDeletePost =
     }
   };
 
-export { onClickSave, onClickResetPost, onClickDeletePost };
+const onClickDeleteImage =
+  (
+    post_id: string,
+    public_id: string,
+    setLoading: Dispatch<SetStateAction<boolean>>,
+    router: AppRouterInstance
+  ): MouseEventHandler<SVGSVGElement> =>
+  async () => {
+    setLoading(true);
+
+    try {
+      const res = await fetch(
+        `/api/posts/delete-image?post_id=${post_id}&public_id=${public_id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error("Failed to delete post");
+      }
+    } catch (error) {
+      console.error("Error fetching posts by author:", error);
+    } finally {
+      toast({ title: "Image Delete" });
+      setLoading(false);
+      router.refresh();
+    }
+  };
+
+export { onClickSave, onClickResetPost, onClickDeletePost, onClickDeleteImage };

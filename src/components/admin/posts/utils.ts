@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MouseEventHandler } from "react";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const onClickAddPost =
   (

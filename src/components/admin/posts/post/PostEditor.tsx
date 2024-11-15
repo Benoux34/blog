@@ -5,6 +5,7 @@ import { InputH2 } from "./Editor/InputH2";
 import { InputH3 } from "./Editor/InputH3";
 import { Divider } from "./Editor/Divider";
 import { Content } from "@/types/posts";
+import { ImagePost } from "./Editor/ImagePost";
 
 type Props = {
   widgets: Content;
@@ -46,6 +47,8 @@ const PostEditor = ({ widgets, setWidgets }: Props) => {
             );
           case "divider":
             return <Divider index={index} setWidgets={setWidgets} />;
+          case "img":
+            return <ImagePost />;
           default:
             return (
               <InputH1
