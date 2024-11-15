@@ -10,7 +10,7 @@ type Posts = ReadonlyArray<{
   author_id: string;
   thumbnail: string;
   slug: string | null;
-  image_url: string | null;
+  image_url: string | undefined;
   image_public_id: string | null;
 }>;
 
@@ -24,7 +24,7 @@ type Post = Readonly<{
   author_id: string;
   thumbnail: string;
   slug: string | null;
-  image_url: string | null;
+  image_url: string | undefined;
   image_public_id: string | null;
 }>;
 
